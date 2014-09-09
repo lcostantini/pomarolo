@@ -1,0 +1,21 @@
+% render "new_pomodoro"
+<h1>Pomarolo Activities</h1>
+<table id="pomodoros">
+  <tr>
+    <th>Descriotion</th>
+    <th>Pomarolos</th>
+    <th>Interruption</th>
+    <th>Finish</th>
+  </tr>
+  % unless @pomodoros.nil?
+    % @pomodoros.each do |pomodoro|
+    <tr>
+      <td>{{ pomodoro.description }}</td>
+      <td>{{ pomodoro.pomarolos }}</td>
+      <td>{{ pomodoro.interruption }}></td>
+      <td>{{ pomodoro.finish }}</td>
+    </tr>
+    % end
+  % end
+</table>
+

@@ -1,0 +1,11 @@
+<h1>New Pomarolo activities</h1>
+<form action="/" method="POST">
+  <input type="text" name="activity[description]" placeholder="Description" />
+  <input type="text" name="activity[pomarolos]" placeholder="How many pomarolos?" />
+  <label>Interruption?</label>
+  <input type="checkbox" name="activity[interruption]" value="no" />
+  <label>Finish?</label>
+  <input type="checkbox" name="activity[finish]" value="no" />
+  <button type="submit" name="new">Save</button>
+</form>
+<br><br>
