@@ -1,2 +1,0 @@
-<h3>{{ message }}</h3>
-<a href="{{ url }}{{ restaurant_id }}" id="btn_grey">{{ button_message }}</a>

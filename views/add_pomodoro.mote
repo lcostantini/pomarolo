@@ -1,5 +1,5 @@
 <h3>Add new pomarolo</h3>
-<form action="/add_pomodoro" method="POST" id="form_add_pomodoro">
+<form action="/" method="POST" >
   <label>Description:</label>
   <input type="text" name="pomodoro[description]" value="{{ edit.description }}" >
   <br>
@@ -12,5 +12,3 @@
     <button type="submit" name="add">Add</button>
   </div>
 </form>
-<br><br>
-<a href="/">Back to pomarolos</a>
