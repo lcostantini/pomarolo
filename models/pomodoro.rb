@@ -1,6 +1,6 @@
-class Restaurant < Ohm::Model
+class Pomodoro < Ohm::Model
   attribute :description
-  attribute :pomarolos
+  attribute :pomarolo
   attribute :interruption
   attribute :finish
 end

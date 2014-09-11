@@ -1,3 +1,3 @@
 require "./app"
 
-run(Cuba)
+run Cuba
