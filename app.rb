@@ -26,7 +26,7 @@ Cuba.define do
           button_message: "Back to pomarolos list"))
     end
     on default do
-      edit = EditPomodoro.new({})
+      edit = Pomodoro.new({})
       res.write mote("views/layout.mote",
         title: "Add pomarolo",
         content: mote("views/add_pomodoro.mote",

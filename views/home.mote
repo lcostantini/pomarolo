@@ -12,7 +12,7 @@
     <td>{{ pomodoro.description }}</td>
     <td>{{ pomodoro.pomarolo }}</td>
     <td>{{ pomodoro.interruption }}</td>
-    <td><a href="/pomarolo/{{ pomodoro.id }}">{{ pomodoro.finish }}</a></td>
+    <td><a href="/pomarolo/{{ pomodoro.id }}">{{ pomodoro.finished? }}</a></td>
   </tr>
   % end
 </table>
