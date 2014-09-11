@@ -1,0 +1,24 @@
+<h3>Add new pomarolo</h3>
+<form action="/add_pomodoro" method="POST" id="form_add_pomodoro">
+  <label>Description:</label>
+  <input type="text" name="pomodoro[description]" value="{{ edit.description }}" >
+  <br>
+
+  <label>Pomarolos</label>
+  <input type="text" name="pomodoro[pomarolo]" value="{{ edit.pomarolo }}" >
+  <br>
+
+  <label>Interruption</label>
+  <input type="checkbox" name="pomodoro[interruption]" value="yes" >
+  <br>
+
+  <label>Finish</label>
+  <input type="checkbox" name="pomodoro[finish]" value="yes" >
+  <br>
+  
+  <div>
+    <button type="submit" name="add">Add</button>
+  </div>
+</form>
+<br><br>
+<a href="/">Back to pomarolos</a>

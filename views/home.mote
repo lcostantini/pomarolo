@@ -1,21 +1,18 @@
-% render "new_pomodoro"
-<h1>Pomarolo Activities</h1>
-<table id="pomodoros">
+<a href="/add_pomodoro">Add Pomarolos</a>
+<br><br>
+<table>
   <tr>
-    <th>Descriotion</th>
+    <th>Description</th>
     <th>Pomarolos</th>
     <th>Interruption</th>
     <th>Finish</th>
   </tr>
-  % unless @pomodoros.nil?
-    % @pomodoros.each do |pomodoro|
-    <tr>
-      <td>{{ pomodoro.description }}</td>
-      <td>{{ pomodoro.pomarolos }}</td>
-      <td>{{ pomodoro.interruption }}></td>
-      <td>{{ pomodoro.finish }}</td>
-    </tr>
-    % end
+  % pomodoros.each do |pomodoro|
+  <tr>
+    <td>{{ pomodoro.description }}</td>
+    <td>{{ pomodoro.pomarolo }}</td>
+    <td>{{ pomodoro.interruption }}</td>
+    <td><a href="/pomarolo/{{ pomodoro.id }}">{{ pomodoro.finish }}</a></td>
+  </tr>
   % end
 </table>
-
