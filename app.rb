@@ -3,7 +3,6 @@ require "mote"
 require "mote/render"
 require "ohm"
 
-
 Cuba.plugin Mote::Render
 Cuba.plugin Mote::Helpers
 
@@ -24,13 +23,7 @@ Cuba.define do
   end
   
   on "pomarolo/:pomodoro_id" do |pomodoro_id|
-    pomodoro = Pomodoro[pomodoro_id]
-    if pomodoro.finish == 'true'
-      pomodoro.finish = false
-    else
-      pomodoro.finish = true
-    end
-    pomodoro.save
+    pomodoro = Pomodoro[pomodoro_id].swap_finish
     res.redirect "/"
   end
   

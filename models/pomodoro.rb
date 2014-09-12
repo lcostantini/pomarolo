@@ -7,4 +7,10 @@ class Pomodoro < Ohm::Model
   def finished?
     !! finish
   end
+  
+  def swap_finish
+    self.finish = !self.finished?
+    self.save
+  end
+  
 end
