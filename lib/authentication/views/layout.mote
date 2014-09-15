@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    % if session[:user]
+      <a href="/logout">Log out</a>
+    % else
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+    % end
+    {{ content }}
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<h3>Sign up</h3>
+<form action="/signup" method="POST">
+  <label>Email</label>
+  <input type="text" name="user[email]" value="{{ edit.email }}">
+  <br>
+
+  <label>Password</label>
+  <input type="password" name="user[password]" value="">
+
+  <div>
+    <button type="submit" name="signup">Sign up</button>
+  </div>
+</form>
