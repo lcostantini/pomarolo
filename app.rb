@@ -2,30 +2,14 @@ require "cuba"
 require "mote"
 require "mote/render"
 require "ohm"
-require_relative "./lib/authentication/authentication"
 
 Cuba.plugin Mote::Render
 Cuba.plugin Mote::Helpers
 
 Dir["./models/**/*.rb"].each { |rb| require rb }
+Dir["./lib/**/*.rb"].each { |rb| require rb }
 
 Cuba.define do
-  on root do
-    run Authentication
-  end
-  
-  on "logout" do
-    run Authentication
-  end
-  
-  on "signup" do
-    run Authentication
-  end
-  
-  on "login" do
-    run Authentication
-  end
-  
   on "user" do
     edit = Pomodoro.new({})
     render("add_pomodoro", edit: edit, title: "Pomarolos")
@@ -41,5 +25,9 @@ Cuba.define do
   on "pomarolo/:pomodoro_id" do |pomodoro_id|
     pomodoro = Pomodoro[pomodoro_id].swap_finish
     res.redirect "/user"
-  end 
+  end
+  
+  on default do
+    run Authentication
+  end
 end
