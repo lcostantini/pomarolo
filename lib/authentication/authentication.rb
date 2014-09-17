@@ -27,7 +27,7 @@ class Authentication < Cuba
     on "signup" do
       on param("user") do |params|
         u = User.create(params)
-        res.redirect "/user"
+        res.redirect ("/user")
       end
       
       on default do
@@ -42,13 +42,12 @@ class Authentication < Cuba
         user = User.with(:email, params["email"]) unless nil
         if user && user.password == params["password"]
           session[:user] = user.id
-          res.redirect "/user"
+          res.redirect ("user/#{user.id}")
         else
           res.write mote("lib/authentication/views/layout.mote",
-          title: "Login",
-          message: "Email or password are incorrect.",
-          content: mote("lib/authentication/views/login.mote",
-            params: params))
+            title: "Login",
+            message: "Email or password are incorrect.",
+            content: mote("lib/authentication/views/login.mote", params: params))
         end
       end
       
