@@ -10,8 +10,16 @@
   <tr>
     <td>{{ pomodoro.description }}</td>
     <td>{{ pomodoro.pomarolo }}</td>
-    <td>{{ pomodoro.interruption }}</td>
-    <td><a href="/pomarolo/{{ pomodoro.id }}">{{ pomodoro.finished? }}</a></td>
+    <td>
+      <form action="/pomarolo/interruption/{{ pomodoro.id }}" method="POST">
+        <button type="submit" name="interruption">{{ pomodoro.interruption? }}</button>
+      </form>
+    </td>
+    <td>
+      <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
+        <button type="submit" name="finish">{{ pomodoro.finished? }}</button>
+      </form>
+    </td>
   </tr>
   % end
 </table>

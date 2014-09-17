@@ -1,13 +1,13 @@
 <h3>Add new pomarolo</h3>
-<form action="/" method="POST" >
+<form action="/user" method="POST" >
   <label>Description:</label>
-  <input type="text" name="pomodoro[description]" value="{{ edit.description }}" >
+  <input type="text" name="pomodoro[description]" value="{{ pomarolo.description }}" >
   <br>
 
   <label>Pomarolos</label>
-  <input type="text" name="pomodoro[pomarolo]" value="{{ edit.pomarolo }}" >
+  <input type="text" name="pomodoro[pomarolo]" value="{{ pomarolo.pomarolo }}" >
   <br>
-
+  <input type="hidden" name="pomodoro[user_id]" value="{{ pomarolo.user_id }}" >
   <div>
     <button type="submit" name="add">Add</button>
   </div>
