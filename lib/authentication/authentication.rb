@@ -42,7 +42,7 @@ class Authentication < Cuba
         user = User.with(:email, params["email"]) unless nil
         if user && user.password == params["password"]
           session[:user] = user.id
-          res.redirect ("user/#{user.id}")
+          res.redirect ("/user")
         else
           res.write mote("lib/authentication/views/layout.mote",
             title: "Login",

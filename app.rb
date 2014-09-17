@@ -12,17 +12,17 @@ Dir["./lib/**/*.rb"].each { |rb| require rb }
 
 Cuba.define do
   on "user" do
-    pomarolo = Pomodoro.new({ user_id: session[:user] })
-    render("add_pomodoro", pomarolo: pomarolo, title: "Pomarolos", logged: session[:user])
-    on param("pomodoro") do |params|
-      pomodoro = Pomodoro.create(params)
-      res.redirect "/user"
+    if session[:user].nil?
+      res.redirect "/"
+    else
+      pomarolo = Pomodoro.new({ user_id: session[:user] })
+      render("add_pomodoro", pomarolo: pomarolo, title: "Pomarolos")
+      on param("pomodoro") do |params|
+        pomodoro = Pomodoro.create(params)
+        res.redirect "/user"
+      end
+      res.write partial("home", pomodoros: Pomodoro.find(:user_id => session[:user]))
     end
-
-    res.write mote("views/layout.mote",
-      title: "Pomarolos",
-      logged: session[:user],
-      content: mote("views/home.mote", pomodoros: Pomodoro.find(:user_id => session[:user])))
   end
   
   on "pomarolo/finish/:pomodoro_id" do |pomodoro_id|
