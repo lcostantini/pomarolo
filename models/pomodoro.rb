@@ -3,9 +3,15 @@ class Pomodoro < Ohm::Model
   attribute :pomarolo
   attribute :interruption
   attribute :finish
+  attribute :user_id
+  index :user_id
   
   def finished?
     !! finish
+  end
+  
+  def interruption?
+    !! interruption
   end
   
   def swap_finish
@@ -13,4 +19,8 @@ class Pomodoro < Ohm::Model
     self.save
   end
   
+  def swap_interruption
+    self.interruption = !self.interruption?
+    self.save
+  end
 end
