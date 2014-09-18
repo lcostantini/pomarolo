@@ -7,7 +7,7 @@
   <label>Pomarolos</label>
   <input type="text" name="pomodoro[pomarolo]" value="{{ pomarolo.pomarolo }}" >
   <br>
-  <input type="hidden" name="pomodoro[user_id]" value="{{ pomarolo.user_id }}" >
+  <input type="hidden" name="pomodoro[user]" value="{{ pomarolo.user }}" >
   <div>
     <button type="submit" name="add">Add</button>
   </div>

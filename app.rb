@@ -15,13 +15,13 @@ Cuba.define do
     if session[:user].nil?
       res.redirect "/"
     else
-      pomarolo = Pomodoro.new({ user_id: session[:user] })
+      pomarolo = Pomodoro.new({ user: session[:user] })
       render("add_pomodoro", pomarolo: pomarolo, title: "Pomarolos")
       on param("pomodoro") do |params|
         pomodoro = Pomodoro.create(params)
         res.redirect "/user"
       end
-      res.write partial("home", pomodoros: Pomodoro.find(:user_id => session[:user]))
+      res.write partial("home", pomodoros: Pomodoro.find(:user => session[:user]))
     end
   end
   

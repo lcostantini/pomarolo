@@ -3,8 +3,8 @@ class Pomodoro < Ohm::Model
   attribute :pomarolo
   attribute :interruption
   attribute :finish
-  attribute :user_id
-  index :user_id
+  attribute :user
+  index :user
   
   def finished?
     !! finish
