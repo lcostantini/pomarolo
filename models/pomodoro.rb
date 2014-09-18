@@ -6,21 +6,13 @@ class Pomodoro < Ohm::Model
   attribute :user
   index :user
   
-  def finished?
-    !! finish
+  def swap attribute
+    send "#{attribute.to_s}=".to_sym, !send(attribute)
+    save
   end
   
-  def interruption?
-    !! interruption
+  def state attribute
+    !!send(attribute)
   end
   
-  def swap_finish
-    self.finish = !self.finished?
-    self.save
-  end
-  
-  def swap_interruption
-    self.interruption = !self.interruption?
-    self.save
-  end
 end

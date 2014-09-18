@@ -26,12 +26,12 @@ Cuba.define do
   end
   
   on "pomarolo/finish/:pomodoro_id" do |pomodoro_id|
-    pomodoro = Pomodoro[pomodoro_id].swap_finish
+    pomodoro = Pomodoro[pomodoro_id].swap :finish
     res.redirect "/user"
   end
 
   on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
-    pomodoro = Pomodoro[pomodoro_id].swap_interruption
+    pomodoro = Pomodoro[pomodoro_id].swap :interruption
     res.redirect "/user"
   end
 

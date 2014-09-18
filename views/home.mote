@@ -12,12 +12,12 @@
     <td>{{ pomodoro.pomarolo }}</td>
     <td>
       <form action="/pomarolo/interruption/{{ pomodoro.id }}" method="POST">
-        <button type="submit" name="interruption">{{ pomodoro.interruption? }}</button>
+        <button type="submit" name="interruption">{{ pomodoro.state(:interruption) }}</button>
       </form>
     </td>
     <td>
       <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
-        <button type="submit" name="finish">{{ pomodoro.finished? }}</button>
+        <button type="submit" name="finish">{{ pomodoro.state(:finish) }}</button>
       </form>
     </td>
   </tr>
