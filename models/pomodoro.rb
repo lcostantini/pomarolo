@@ -1,18 +1,25 @@
 class Pomodoro < Ohm::Model
   attribute :description
-  attribute :pomarolo
   attribute :interruption
+  attribute :estimate
+  attribute :real
   attribute :finish
   attribute :user
   index :user
-  
-  def swap attribute
-    send "#{attribute.to_s}=".to_sym, !send(attribute)
-    save
+
+  def finished?
+    !! finish
+  end
+
+  def swap_finish
+    self.finish = !self.finished?
+    self.save
   end
   
-  def state attribute
-    !!send(attribute)
+  def difference?
+    unless self.real.nil?
+      self.real.to_i - self.estimate.to_i
+    end
   end
   
 end

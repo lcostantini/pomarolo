@@ -2,22 +2,22 @@
 <table>
   <tr>
     <th>Description</th>
-    <th>Pomarolos</th>
     <th>Interruption</th>
+    <th>Estimate</th>
+    <th>Real</th>
+    <th>Diff</th>
     <th>Finish</th>
   </tr>
   % pomodoros.each do |pomodoro|
   <tr>
     <td>{{ pomodoro.description }}</td>
-    <td>{{ pomodoro.pomarolo }}</td>
-    <td>
-      <form action="/pomarolo/interruption/{{ pomodoro.id }}" method="POST">
-        <button type="submit" name="interruption">{{ pomodoro.state(:interruption) }}</button>
-      </form>
-    </td>
+    <td><a href="/pomarolo/interruption">Add</a></td>
+    <td>{{ pomodoro.estimate }}</td>
+    <td>{{ pomodoro.real }}</td>
+    <td>{{ pomodoro.difference? }}</td>
     <td>
       <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
-        <button type="submit" name="finish">{{ pomodoro.state(:finish) }}</button>
+        <button type="submit" name="finish">{{ pomodoro.finished? }}</button>
       </form>
     </td>
   </tr>

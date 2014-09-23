@@ -1,14 +1,11 @@
 <h3>Add new pomarolo</h3>
 <form action="/user" method="POST" >
   <label>Description:</label>
-  <input type="text" name="pomodoro[description]" value="{{ pomarolo.description }}" >
+  <input type="text" name="pomodoro[description]" value="{{ pomodoro.description }}" >
   <br>
-
-  <label>Pomarolos</label>
-  <input type="text" name="pomodoro[pomarolo]" value="{{ pomarolo.pomarolo }}" >
+  <label>Estimate:</label>
+  <input type="number" name="pomodoro[estimate]" value="{{ pomodoro.estimate }}" >
   <br>
-  <input type="hidden" name="pomodoro[user]" value="{{ pomarolo.user }}" >
-  <div>
-    <button type="submit" name="add">Add</button>
-  </div>
+  <input type="hidden" name="pomodoro[user]" value="{{ pomodoro.user }}" ><br>
+  <div><button type="submit" name="add">Add</button></div>
 </form>

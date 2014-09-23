@@ -15,8 +15,8 @@ Cuba.define do
     if session[:user].nil?
       res.redirect "/"
     else
-      pomarolo = Pomodoro.new({ user: session[:user] })
-      render("add_pomodoro", pomarolo: pomarolo, title: "Pomarolos")
+      pomodoro = Pomodoro.new({ user: session[:user] })
+      render("add_pomodoro", pomodoro: pomodoro, title: "Pomarolos")
       on param("pomodoro") do |params|
         pomodoro = Pomodoro.create(params)
         res.redirect "/user"
@@ -26,13 +26,18 @@ Cuba.define do
   end
   
   on "pomarolo/finish/:pomodoro_id" do |pomodoro_id|
-    pomodoro = Pomodoro[pomodoro_id].swap :finish
+    pomodoro = Pomodoro[pomodoro_id].swap_finish
     res.redirect "/user"
   end
 
-  on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
-    pomodoro = Pomodoro[pomodoro_id].swap :interruption
-    res.redirect "/user"
+  on "pomarolo/interruption" do
+    interruption = Interruption.new({ user: session[:user] })
+    render("add_interruption", interruption: interruption, title: "Pomarolos")
+    on param("interruption") do |params|
+      interruption = Interruption.create(params)
+      res.redirect "/user"
+    end
+    res.write partial("interruptions", interruptions: Interruption.find(:user => session[:user]))
   end
 
   on default do
