@@ -1,0 +1,12 @@
+<h1>Interruptions list</h1>
+<table>
+  <tr>
+    <th>Description</th>
+  </tr>
+  % interruptions.each do |interruption|
+  <tr>
+    <td>{{ interruption.description }}</td>
+  </tr>
+  % end
+</table><br>
+<a href="/user">Back</a>
