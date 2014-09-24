@@ -30,14 +30,14 @@ Cuba.define do
     res.redirect "/user"
   end
 
-  on "pomarolo/interruption" do
-    interruption = Interruption.new({ user: session[:user] })
+  on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
+    interruption = Interruption.new({ user: session[:user], pomodoro: pomodoro_id })
     render("add_interruption", interruption: interruption, title: "Pomarolos")
     on param("interruption") do |params|
       interruption = Interruption.create(params)
       res.redirect "/user"
     end
-    res.write partial("interruptions", interruptions: Interruption.find(:user => session[:user]))
+    res.write partial("interruptions", interruptions: Interruption.find(:user => session[:user], :pomodoro => pomodoro_id ))
   end
 
   on default do

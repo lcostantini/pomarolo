@@ -1,7 +1,8 @@
 <h3>Add new interruption</h3>
-<form action="/pomarolo/interruption" method="POST" >
+<form action="/pomarolo/interruption/{{ interruption.pomodoro }}" method="POST" >
   <label>Description:</label>
   <input type="text" name="interruption[description]" value="{{ interruption.description }}" ><br>
+  <input type="hidden" name="interruption[pomodoro]" value="{{ interruption.pomodoro }}" ><br>
   <input type="hidden" name="interruption[user]" value="{{ interruption.user }}" ><br>
   <div><button type="submit" name="add">Add</button></div>
 </form>
