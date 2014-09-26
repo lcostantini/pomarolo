@@ -23,7 +23,7 @@ class Pomodoro < Ohm::Model
   end
   
   def real_po(value)
-    self.real = self.real.to_i + 1
+    self.real = self.real.to_i + (value.to_i)
     self.save
   end
   
