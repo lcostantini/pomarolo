@@ -17,8 +17,29 @@ class Pomodoro < Ohm::Model
   end
   
   def difference?
-    unless self.real.nil?
+    unless self.real == 0
       self.real.to_i - self.estimate.to_i
+    end
+  end
+  
+  def real_po(value)
+    self.real = self.real.to_i + 1
+    self.save
+  end
+  
+  def repeat
+    if self.difference? >= 0
+      self.real.to_i + 1
+    else
+      self.estimate.to_i
+    end
+  end
+  
+  def status_checkbox(i)
+    if i < self.real.to_i
+      "checked"
+    else
+      "unchecked"
     end
   end
   

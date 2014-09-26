@@ -11,9 +11,15 @@
   % pomodoros.each do |pomodoro|
   <tr>
     <td>{{ pomodoro.description }}</td>
-    <td><a href="/pomarolo/interruption">Add</a></td>
+    <td><a href="/pomarolo/interruption/{{ pomodoro.id }}">Add</a></td>
     <td>{{ pomodoro.estimate }}</td>
-    <td>{{ pomodoro.real }}</td>
+    <td>
+      <form action="/user" method="POST" >
+        % (pomodoro.repeat).times do |i|
+          <input id="{{ pomodoro.id }}" name="real-check" type="checkbox" {{ pomodoro.status_checkbox(i) }} />
+        % end
+      </form>
+    </td>
     <td>{{ pomodoro.difference? }}</td>
     <td>
       <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
@@ -23,3 +29,20 @@
   </tr>
   % end
 </table>
+
+<script>
+  var countChecked = function() {
+    pomodoro_id = $(this).attr('id')
+    if ($(this).is(':checked')) {
+      value = "1";
+    } else {
+      value = "0";
+    }
+    $.ajax({
+      type: "POST",
+      url: "/pomarolo/" + pomodoro_id + "/real/" + value
+    });
+  };
+
+  $( "input[name=real-check]" ).on( "click", countChecked );
+</script>

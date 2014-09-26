@@ -40,6 +40,11 @@ Cuba.define do
     res.write partial("interruptions", interruptions: Interruption.find(:user => session[:user], :pomodoro => pomodoro_id ))
   end
 
+  on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
+    pomodoro = Pomodoro[pomodoro_id]
+    pomodoro.real_po(value)
+  end
+
   on default do
     run Authentication
   end
