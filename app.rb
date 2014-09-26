@@ -43,6 +43,7 @@ Cuba.define do
   on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
     pomodoro = Pomodoro[pomodoro_id]
     pomodoro.real_po(value)
+    res.write partial("home", pomodoros: Pomodoro.find(:user => session[:user]))
   end
 
   on default do

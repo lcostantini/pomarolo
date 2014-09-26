@@ -1,48 +1,53 @@
-<h1>Pomarolos list</h1>
-<table>
-  <tr>
-    <th>Description</th>
-    <th>Interruption</th>
-    <th>Estimate</th>
-    <th>Real</th>
-    <th>Diff</th>
-    <th>Finish</th>
-  </tr>
-  % pomodoros.each do |pomodoro|
-  <tr>
-    <td>{{ pomodoro.description }}</td>
-    <td><a href="/pomarolo/interruption/{{ pomodoro.id }}">Add</a></td>
-    <td>{{ pomodoro.estimate }}</td>
-    <td>
-      <form action="/user" method="POST" >
-        % (pomodoro.repeat).times do |i|
-          <input id="{{ pomodoro.id }}" name="real-check" type="checkbox" {{ pomodoro.status_checkbox(i) }} />
-        % end
-      </form>
-    </td>
-    <td>{{ pomodoro.difference? }}</td>
-    <td>
-      <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
-        <button type="submit" name="finish">{{ pomodoro.finished? }}</button>
-      </form>
-    </td>
-  </tr>
-  % end
-</table>
+<div id="pomodoros">
+  <h1>Pomarolos list</h1>
+  <table>
+    <tr>
+      <th>Description</th>
+      <th>Interruption</th>
+      <th>Estimate</th>
+      <th>Real</th>
+      <th>Diff</th>
+      <th>Finish</th>
+    </tr>
+    % pomodoros.each do |pomodoro|
+    <tr>
+      <td>{{ pomodoro.description }}</td>
+      <td><a href="/pomarolo/interruption/{{ pomodoro.id }}">Add</a></td>
+      <td>{{ pomodoro.estimate }}</td>
+      <td>
+        <form action="/user" method="POST" >
+          % (pomodoro.repeat).times do |i|
+            <input id="{{ pomodoro.id }}" name="real-check" type="checkbox" {{ pomodoro.status_checkbox(i) }} />
+          % end
+        </form>
+      </td>
+      <td>{{ pomodoro.difference? }}</td>
+      <td>
+        <form action="/pomarolo/finish/{{ pomodoro.id }}" method="POST">
+          <button type="submit" name="finish">{{ pomodoro.finished? }}</button>
+        </form>
+      </td>
+    </tr>
+    % end
+  </table>
 
-<script>
-  var countChecked = function() {
-    pomodoro_id = $(this).attr('id')
-    if ($(this).is(':checked')) {
-      value = "1";
-    } else {
-      value = "0";
-    }
-    $.ajax({
-      type: "POST",
-      url: "/pomarolo/" + pomodoro_id + "/real/" + value
-    });
-  };
+  <script>
+    var countChecked = function() {
+      pomodoro_id = $(this).attr('id')
+      if ($(this).is(':checked')) {
+        value = "1";
+      } else {
+        value = "0";
+      }
+      $.ajax({
+        type: "POST",
+        url: "/pomarolo/" + pomodoro_id + "/real/" + value,
+        success:function(data) {
+          $('#pomodoros').html(data);
+        }
+      });
+    };
 
-  $( "input[name=real-check]" ).on( "click", countChecked );
-</script>
+    $( "input[name=real-check]" ).on( "click", countChecked );
+  </script>
+</div>
