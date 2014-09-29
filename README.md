@@ -27,7 +27,7 @@ Pomarolo
 
 ## Vistas
 
-1. No usar js embevido.
+1. ~~No usar js embevido.~~
 2. Reemplazar html por slim.
 
 ## Repo badges
