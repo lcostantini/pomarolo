@@ -4,6 +4,8 @@ require "mote/render"
 require "ohm"
 require 'pry'
 
+Cuba.use Rack::Static, root: "public", urls: ["/js"]
+
 Cuba.plugin Mote::Render
 Cuba.plugin Mote::Helpers
 
@@ -49,4 +51,5 @@ Cuba.define do
   on default do
     run Authentication
   end
+
 end
