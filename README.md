@@ -9,7 +9,7 @@ Was made with [Cuba](https://github.com/soveran/cuba) an [Redis](http://redis.io
 # Instalation
 
 1. Git clone https://github.com/lcostantini/pomarolo.git
-2. Install [Redis](http://redis.io/).
+2. Install [Redis](http://redis.io/download).
 3. After installing Redis go to the installation folder and run **src/redis-server**.
 4. In the pomarolo folder run **rackup config.ru**.
 
