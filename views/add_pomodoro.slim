@@ -1,0 +1,11 @@
+h3 Add new pomarolo
+form action="/user" method="POST"
+  label Description:
+  input name="pomodoro[description]" type="text" value=("#{pomodoro.description}")
+  br
+  label Estimate:
+  input name="pomodoro[estimate]" type="number" value=("#{pomodoro.estimate}")
+  br
+  input name="pomodoro[user]" type="hidden" value=("#{pomodoro.user}")
+  input name="pomodoro[real]" type="hidden" value="0"
+  button name="add" type="submit" Add

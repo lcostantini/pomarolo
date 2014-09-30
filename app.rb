@@ -1,13 +1,14 @@
-require "cuba"
-require "mote"
-require "mote/render"
-require "ohm"
+require 'cuba'
+require 'cuba/render'
+require 'tilt'
+require 'slim'
+require 'ohm'
 require 'pry'
 
 Cuba.use Rack::Static, root: "public", urls: ["/js"]
 
-Cuba.plugin Mote::Render
-Cuba.plugin Mote::Helpers
+Cuba.plugin Cuba::Render
+Cuba.settings[:render][:template_engine] = "slim"
 
 Dir["./models/**/*.rb"].each { |rb| require rb }
 Dir["./lib/**/*.rb"].each { |rb| require rb }
@@ -18,7 +19,7 @@ Cuba.define do
       res.redirect "/"
     else
       pomodoro = Pomodoro.new({ user: session[:user] })
-      render("add_pomodoro", pomodoro: pomodoro, title: "Pomarolos")
+      render("add_pomodoro", pomodoro: pomodoro)
       on param("pomodoro") do |params|
         pomodoro = Pomodoro.create(params)
         res.redirect "/user"
@@ -34,7 +35,7 @@ Cuba.define do
 
   on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
     interruption = Interruption.new({ user: session[:user], pomodoro: pomodoro_id })
-    render("add_interruption", interruption: interruption, title: "Pomarolos")
+    render("add_interruption", interruption: interruption)
     on param("interruption") do |params|
       interruption = Interruption.create(params)
       res.redirect "/user"
