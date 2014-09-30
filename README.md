@@ -3,22 +3,33 @@ Pomarolo
 
 # Description
 
-# Install
+Pomarolo is a small application to create [Pomodoros](http://pomodorotechnique.com/) tasks.
+Was made with [Cuba](https://github.com/soveran/cuba) an [Redis](http://redis.io/).
 
-# Usage
+# Instalation
+
+1. Git clone https://github.com/lcostantini/pomarolo.git
+2. Install [Redis](http://redis.io/).
+3. After installing Redis go to the installation folder and run **src/redis-server**.
+4. In the pomarolo folder run **rackup config.ru**.
+
+# Contributing
+
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new pull request so we can talk about it.
 
 # License
 
-# Contribute
-
-
-
+GPL
 
 # TODO
 
 ## Funcionalidades
 
-1. Escribir el readme.
+1. ~~Escribir el readme.~~
 2. Las tareas no son editables después de que se marcan como terminadas.
 3. Agreger fecha a los pomodoros.
 4. Agregar paginación por fecha a los pomodoros.
