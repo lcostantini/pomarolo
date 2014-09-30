@@ -4,6 +4,7 @@ class Pomodoro < Ohm::Model
   attribute :estimate
   attribute :real
   attribute :finish
+  attribute :date
   attribute :user
   index :user
 
