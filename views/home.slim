@@ -16,7 +16,7 @@
         td
           form action="/user" method="POST"
             - (pomodoro.repeat).times do |i|
-              <input id="#{pomodoro.id}" name="real-check" type="checkbox" #{pomodoro.status_checkbox(i)} />
+              <input id="#{pomodoro.id}" name="real-check" type="checkbox" #{pomodoro.status_checkbox(i)} >
         td= pomodoro.difference?
         td
           form action="/pomarolo/finish/#{pomodoro.id}" method="POST"

@@ -2,14 +2,15 @@ class Pomodoro < Ohm::Model
   attribute :description
   attribute :interruption
   attribute :estimate
-  attribute :real
   attribute :finish
-  attribute :date
+  attribute :real
+  attribute :created_at
   attribute :user
   index :user
+  index :created_at
 
   def finished?
-    !! finish
+    !!finish
   end
 
   def swap_finish

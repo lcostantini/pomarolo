@@ -24,7 +24,7 @@ Cuba.define do
         pomodoro = Pomodoro.create(params)
         res.redirect "/user"
       end
-      res.write partial("home", pomodoros: Pomodoro.find(:user => session[:user]))
+      res.write partial("home", pomodoros: Pomodoro.find(user: session[:user], created_at: Date.today.to_s))
     end
   end
   
@@ -40,13 +40,13 @@ Cuba.define do
       interruption = Interruption.create(params)
       res.redirect "/user"
     end
-    res.write partial("interruptions", interruptions: Interruption.find(:user => session[:user], :pomodoro => pomodoro_id ))
+    res.write partial("interruptions", interruptions: Interruption.find(user: session[:user], pomodoro: pomodoro_id ))
   end
 
   on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
     pomodoro = Pomodoro[pomodoro_id]
     pomodoro.real_po(value)
-    res.write partial("home", pomodoros: Pomodoro.find(:user => session[:user]))
+    res.write partial("home", pomodoros: Pomodoro.find(user: session[:user], created_at: Date.today.to_s))
   end
 
   on default do
