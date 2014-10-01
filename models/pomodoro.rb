@@ -45,4 +45,13 @@ class Pomodoro < Ohm::Model
     end
   end
   
+  def save
+    self.created_at = current_date
+    super
+  end
+  
+  def current_date
+    Date.today.to_s
+  end
+  
 end
