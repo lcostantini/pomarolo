@@ -19,7 +19,7 @@ Cuba.define do
       pomodoro = Pomodoro.new({ user: current_user })
       render("add_pomodoro", pomodoro: pomodoro)
       on param("pomodoro") do |params|
-        pomodoro = Pomodoro.create(params)
+        Pomodoro.create(params)
         res.redirect user_path
       end
       res.write partial("home", pomodoros: Pomodoro.find(user: current_user, created_at: Date.today.to_s))
@@ -30,7 +30,7 @@ Cuba.define do
   
   on "pomarolo/finish/:pomodoro_id" do |pomodoro_id|
     if current_user
-      pomodoro = Pomodoro[pomodoro_id].swap_finish
+      Pomodoro[pomodoro_id].swap_finish
       res.redirect user_path
     else
       res.redirect root_path
@@ -42,7 +42,7 @@ Cuba.define do
       interruption = Interruption.new({ user: current_user, pomodoro: pomodoro_id })
       render("add_interruption", interruption: interruption)
       on param("interruption") do |params|
-        interruption = Interruption.create(params)
+        Interruption.create(params)
         res.redirect user_path
       end
       res.write partial("interruptions", interruptions: Interruption.find(user: current_user, pomodoro: pomodoro_id ))
@@ -53,8 +53,7 @@ Cuba.define do
 
   on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
     if current_user
-      pomodoro = Pomodoro[pomodoro_id]
-      pomodoro.real_po(value)
+      Pomodoro[pomodoro_id].real_po(value)
       res.write partial("home", pomodoros: Pomodoro.find(user: current_user, created_at: Date.today.to_s))
     else
       res.redirect root_path
