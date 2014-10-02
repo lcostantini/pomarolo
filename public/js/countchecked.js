@@ -9,7 +9,7 @@ var countChecked = function() {
     type: "POST",
     url: "/pomarolo/" + pomodoro_id + "/real/" + value,
     success:function(data) {
-      $('#pomodoros').html(data);
+      $('#current-pomodoro').html(data);
     }
   });
 };

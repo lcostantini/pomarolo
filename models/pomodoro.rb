@@ -6,10 +6,10 @@ class Pomodoro < Ohm::Model
   attribute :real
   attribute :created_at
   attribute :user
-  attribute :current
+  attribute :current_pomodoro
   index :user
   index :created_at
-  index :current
+  index :current_pomodoro
 
   def finished?
     !!finish
@@ -52,8 +52,8 @@ class Pomodoro < Ohm::Model
     super
   end
   
-  def current_pomodoro
-    self.current = true
+  def current_pomodoro!
+    self.current_pomodoro = true
     self.save
   end
 

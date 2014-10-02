@@ -1,21 +1,13 @@
-#pomodoros
-  h1 Pomarolos list
-  table
+h1 Pomarolos list
+table
+  tr
+    th Description
+    th Estimate
+    th Current
+  - pomodoros.each do |pomodoro|
     tr
-      th Description
-      th Interruption
-      th Estimate
-      th Finish
-      th Current
-    - pomodoros.each do |pomodoro|
-      tr
-        td= pomodoro.description
-        td: a href="/pomarolo/interruption/#{pomodoro.id}" Add
-        td= pomodoro.estimate
-        td
-          form action="/pomarolo/finish/#{pomodoro.id}" method="POST"
-            button name="finish" type="submit" = pomodoro.finished?
-        td
-          form action="/pomarolo/current/#{pomodoro.id}" method="POST"
-            button name="current" type="submit" Current
-  script src="/js/countchecked.js"
+      td= pomodoro.description
+      td= pomodoro.estimate
+      td
+        form action="/pomarolo/current/#{pomodoro.id}" method="POST"
+          button name="current" type="submit" Current
