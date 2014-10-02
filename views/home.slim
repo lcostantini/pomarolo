@@ -3,11 +3,13 @@ table
   tr
     th Description
     th Estimate
+    th Finish
     th Current
   - pomodoros.each do |pomodoro|
     tr
       td= pomodoro.description
       td= pomodoro.estimate
+      td= pomodoro.finished?
       td
         form action="/pomarolo/current/#{pomodoro.id}" method="POST"
           button name="current" type="submit" Current
