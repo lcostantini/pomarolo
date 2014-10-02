@@ -63,7 +63,7 @@ Cuba.define do
 
   on "pomarolo/current/:pomodoro_id" do |pomodoro_id|
     if current_user
-      Pomodoro[pomodoro_id].current_pomodoro!
+      Pomodoro[pomodoro_id].current_pomodoro!(only_current_pomodoro)
       res.redirect user_path
     else
       res.redirect root_path

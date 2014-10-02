@@ -52,9 +52,16 @@ class Pomodoro < Ohm::Model
     super
   end
   
-  def current_pomodoro!
-    self.current_pomodoro = true
-    self.save
+  def current_pomodoro!(pomodoro)
+    if pomodoro.nil?
+      self.current_pomodoro = true
+      self.save
+    else
+      pomodoro.current_pomodoro = false
+      pomodoro.save
+      self.current_pomodoro = true
+      self.save
+    end
   end
 
 end
