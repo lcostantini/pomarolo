@@ -1,0 +1,23 @@
+h1 Current pomodoro
+table
+  tr
+    th Description
+    th Interruption
+    th Estimate
+    th Real
+    th Diff
+    th Finish
+  - pomodoros.each do |pomodoro|
+    tr
+      td= pomodoro.description
+      td: a href="/pomarolo/interruption/#{pomodoro.id}" Add
+      td= pomodoro.estimate
+      td
+        form action="/user" method="POST"
+          - (pomodoro.repeat).times do |i|
+            <input id="#{pomodoro.id}" name="real-check" type="checkbox" #{pomodoro.status_checkbox(i)} >
+      td= pomodoro.difference?
+      td
+        form action="/pomarolo/finish/#{pomodoro.id}" method="POST"
+          button name="finish" type="submit" = pomodoro.finished?
+script src="/js/countchecked.js"

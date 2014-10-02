@@ -6,8 +6,10 @@ class Pomodoro < Ohm::Model
   attribute :real
   attribute :created_at
   attribute :user
+  attribute :current
   index :user
   index :created_at
+  index :current
 
   def finished?
     !!finish
@@ -48,6 +50,11 @@ class Pomodoro < Ohm::Model
   def save
     self.created_at = Date.today.to_s
     super
+  end
+  
+  def current_pomodoro
+    self.current = true
+    self.save
   end
 
 end
