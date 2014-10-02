@@ -22,8 +22,8 @@ Cuba.define do
         Pomodoro.create(params)
         res.redirect user_path
       end
-      res.write partial("current_pomodoro", pomodoros: Pomodoro.find(user: current_user, created_at: Date.today.to_s, current: "true"))
-      res.write partial("home", pomodoros: Pomodoro.find(user: current_user, created_at: Date.today.to_s, current: "false"))
+      res.write partial("current_pomodoro", pomodoros: only_current_pomodoro)
+      res.write partial("home", pomodoros: pomodoros_by_date)
     else
       res.redirect root_path
     end
@@ -46,7 +46,7 @@ Cuba.define do
         Interruption.create(params)
         res.redirect user_path
       end
-      res.write partial("interruptions", interruptions: Interruption.find(user: current_user, pomodoro: pomodoro_id ))
+      res.write partial("interruptions", interruptions: list_interruptions(pomodoro_id))
     else
       res.redirect root_path
     end
@@ -55,7 +55,7 @@ Cuba.define do
   on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
     if current_user
       Pomodoro[pomodoro_id].real_po(value)
-      res.write partial("home", pomodoros: Pomodoro.find(user: current_user, created_at: Date.today.to_s))
+      res.write partial("current_pomodoro", pomodoros: only_current_pomodoro)
     else
       res.redirect root_path
     end
@@ -63,7 +63,7 @@ Cuba.define do
 
   on "pomarolo/current/:pomodoro_id" do |pomodoro_id|
     if current_user
-      Pomodoro[pomodoro_id].current_pomodoro
+      Pomodoro[pomodoro_id].current_pomodoro!
       res.redirect user_path
     else
       res.redirect root_path

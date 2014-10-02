@@ -12,4 +12,16 @@ module UserHelpers
     '/'
   end
   
+  def pomodoros_by_date
+    Pomodoro.find(user: current_user, created_at: Date.today.to_s, current_pomodoro: "false")
+  end
+  
+  def only_current_pomodoro
+    Pomodoro.find(user: current_user, created_at: Date.today.to_s, current_pomodoro: "true")
+  end
+  
+  def list_interruptions(pomodoro_id)
+    Interruption.find(user: current_user, pomodoro: pomodoro_id)
+  end
+  
 end
