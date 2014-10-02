@@ -22,7 +22,7 @@ Cuba.define do
         Pomodoro.create(params)
         res.redirect user_path
       end
-      res.write partial("current_pomodoro", pomodoros: only_current_pomodoro)
+      res.write partial("current_pomodoro", pomodoro: only_current_pomodoro)
       res.write partial("home", pomodoros: pomodoros_by_date)
     else
       res.redirect root_path

@@ -17,7 +17,7 @@ module UserHelpers
   end
   
   def only_current_pomodoro
-    Pomodoro.find(user: current_user, created_at: Date.today.to_s, current_pomodoro: "true")
+    Pomodoro.find(user: current_user, created_at: Date.today.to_s, current_pomodoro: "true").first
   end
   
   def list_interruptions(pomodoro_id)
