@@ -12,12 +12,8 @@ class Pomodoro < Ohm::Model
   index :current_pomodoro
   index :finish
 
-  def finished?
-    !!finish
-  end
-
   def swap_finish
-    self.finish = !self.finished?
+    self.finish = (!!self.finish).to_s
     self.current_pomodoro = false
     self.save
   end

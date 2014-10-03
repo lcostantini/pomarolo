@@ -8,4 +8,6 @@ form action="/user" method="POST"
   br
   input name="pomodoro[user]" type="hidden" value=("#{pomodoro.user}")
   input name="pomodoro[real]" type="hidden" value="0"
+  input name="pomodoro[current_pomodoro]" type="hidden" value=false
+  input name="pomodoro[finish]" type="hidden" value=false
   button name="add" type="submit" Add

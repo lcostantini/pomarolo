@@ -18,6 +18,6 @@
               <input id="#{pomodoro.id}" name="real-check" type="checkbox" #{pomodoro.status_checkbox(i)} >
         td
           form action="/pomarolo/finish/#{pomodoro.id}" method="POST"
-            button name="finish" type="submit" = pomodoro.finished?
+            button name="finish" type="submit" = pomodoro.finish
 
   script src="/js/countchecked.js"

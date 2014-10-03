@@ -9,7 +9,7 @@ table
     tr
       td= pomodoro.description
       td= pomodoro.estimate
-      td= pomodoro.finished?
+      td= pomodoro.finish
       td
         form action="/pomarolo/current/#{pomodoro.id}" method="POST"
           button name="current" type="submit" Current
