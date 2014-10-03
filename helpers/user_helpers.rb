@@ -13,7 +13,7 @@ module UserHelpers
   end
   
   def pomodoros_by_date
-    Pomodoro.find(user: 3, created_at: Date.today.to_s, current_pomodoro: "false").except(finish: "true")
+    Pomodoro.find(user: current_user, created_at: Date.today.to_s, current_pomodoro: "false").except(finish: "true")
   end
   
   def only_current_pomodoro
