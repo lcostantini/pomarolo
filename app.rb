@@ -55,7 +55,7 @@ Cuba.define do
   on "pomarolo/:pomodoro_id/real/:value" do |pomodoro_id, value|
     if current_user
       Pomodoro[pomodoro_id].real_po(value)
-      res.write partial("current_pomodoro", pomodoros: only_current_pomodoro)
+      res.write partial("current_pomodoro", pomodoro: only_current_pomodoro)
     else
       res.redirect root_path
     end
