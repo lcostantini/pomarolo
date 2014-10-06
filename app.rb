@@ -22,6 +22,16 @@ Cuba.define do
         Pomodoro.create(params)
         res.redirect user_path
       end
+      res.write partial("search_input")
+      on param("pomodoro_search") do |params|
+        if pomodoros_created_at(params["created_at"]).empty?
+          res.redirect user_path
+        else
+          res.write partial("search_pomodoro", pomodoros: pomodoros_created_at(params["created_at"]))
+          res.write partial("current_pomodoro", pomodoro: only_current_pomodoro)
+          res.write partial("home", pomodoros: pomodoros_by_date)
+        end
+      end
       res.write partial("current_pomodoro", pomodoro: only_current_pomodoro)
       res.write partial("home", pomodoros: pomodoros_by_date)
     else
@@ -40,7 +50,7 @@ Cuba.define do
 
   on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
     if current_user
-      interruption = Interruption.new({ user: current_user, pomodoro: pomodoro_id })
+      interruption = Interruption.new({ pomodoro: pomodoro_id })
       render("add_interruption", interruption: interruption)
       on param("interruption") do |params|
         Interruption.create(params)
