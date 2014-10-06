@@ -4,10 +4,10 @@ form action="/user" method="POST"
   input name="pomodoro[description]" type="text" value=("#{pomodoro.description}")
   br
   label Estimate:
-  input name="pomodoro[estimate]" type="number" value=("#{pomodoro.estimate}")
+  input name="pomodoro[estimate]" type="number" value=("#{pomodoro.estimate}") max="8.0" min="1.0"
   br
   input name="pomodoro[user]" type="hidden" value=("#{pomodoro.user}")
   input name="pomodoro[real]" type="hidden" value="0"
-  input name="pomodoro[current_pomodoro]" type="hidden" value=false
-  input name="pomodoro[finish]" type="hidden" value=false
+  input name="pomodoro[current_pomodoro]" type="hidden" value="false"
+  input name="pomodoro[finish]" type="hidden" value="false"
   button name="add" type="submit" Add

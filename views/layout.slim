@@ -4,6 +4,7 @@ html
     title Pomarolos
     meta charset="utf-8"
       script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-  .= Date.today.to_s
   a href="/logout" Log out
+  p Today:
+  = Date.today.to_s
   body == content

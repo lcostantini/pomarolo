@@ -30,7 +30,7 @@ GPL
 ## Funcionalidades
 
 1. ~~Escribir el readme.~~
-2. Las tareas no son editables después de que se marcan como terminadas.
+2. ~~Las tareas no son editables después de que se marcan como terminadas.~~
 3. ~~Agreger fecha a los pomodoros.~~
 4. Agregar paginación por fecha a los pomodoros.
 5. One single page funcionality.
