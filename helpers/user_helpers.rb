@@ -21,7 +21,11 @@ module UserHelpers
   end
   
   def list_interruptions(pomodoro_id)
-    Interruption.find(user: current_user, pomodoro: pomodoro_id)
+    Interruption.find(pomodoro: pomodoro_id)
+  end
+  
+  def pomodoros_created_at(param_date)
+    Pomodoro.find(user: current_user, created_at: param_date)
   end
   
 end
