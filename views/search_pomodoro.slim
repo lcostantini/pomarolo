@@ -1,17 +1,4 @@
-h1 Pomarolos list
-table
-  tr
-    th Description
-    th Interruptions
-    th Estimate
-    th Diff
-    th Real
-    th Finish
-  - pomodoros.each do |pomodoro|
-    tr
-      td= pomodoro.description
-      td: a href="/pomarolo/interruption/#{pomodoro.id}" Add
-      td= pomodoro.estimate
-      td= pomodoro.difference?
-      td= pomodoro.real
-      td= pomodoro.finish
+h3 Search Pomodoros by date
+form action="/user" method="GET"
+  input id="pomodoro_date" name="pomodoro_search[created_at]" type="date"
+  button type="submit" Search
