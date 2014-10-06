@@ -50,8 +50,6 @@ Cuba.define do
 
   on "pomarolo/interruption/:pomodoro_id" do |pomodoro_id|
     if current_user
-      interruption = Interruption.new({ pomodoro: pomodoro_id })
-      render("add_interruption", interruption: interruption)
       on param("interruption") do |params|
         Interruption.create(params)
         res.redirect user_path

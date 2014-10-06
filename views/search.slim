@@ -10,7 +10,8 @@ table
   - pomodoros.each do |pomodoro|
     tr
       td= pomodoro.description
-      td: a href="/pomarolo/interruption/#{pomodoro.id}" Add
+      td
+        == partial("interruptions", interruptions: list_interruptions(pomodoro.id))
       td= pomodoro.estimate
       td= pomodoro.difference?
       td= pomodoro.real
