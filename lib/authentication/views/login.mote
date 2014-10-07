@@ -1,13 +1,12 @@
-<h3>Login</h3>
+<h1>Login</h1>
 <form action="/login" method="POST">
-  <label>Email</label>
+  <label>Email:</label>
   <input type="text" name="user[email]" value="{{ params["email"] }}">
   <br>
-
-  <label>Password</label>
+  <label>Password:</label>
   <input type="password" name="user[password]" value="">
-
   <div>
     <button type="submit" name="login">Login</button>
   </div>
 </form>
+<a href="/">Back</a>
