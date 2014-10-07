@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/lcostantini/pomarolo/badges/gpa.svg)](https://codeclimate.com/github/lcostantini/pomarolo)
+
 Pomarolo
 ========
 
@@ -44,7 +46,7 @@ GPL
 
 ## Repo badges
 
-1. Agregar codeclimate.
+1. ~~Agregar codeclimate.~~
 2. Agregar travis.
 3. Agregar test coeverage.
 
